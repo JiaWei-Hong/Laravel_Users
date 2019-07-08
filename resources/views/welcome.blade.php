@@ -85,6 +85,10 @@
             .card-body{
                 background-color:antiquewhite;
             }
+
+            table{
+                border-radius: 5px;
+            }
         </style>
     </head>
     <body>
@@ -105,13 +109,13 @@
                             <div class="container">
                                 <div class="form-group">
                                     <p>
-                                        <input type="text" class="form-control" placeholder="Enter Username" required>
+                                        <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
                                     </p>
                                     <p>
-                                        <input type="text" class="form-control" placeholder="Enter Account" required>
+                                        <input type="text" class="form-control" name="account" placeholder="Enter Account" required>
                                     </p>
                                     <p>
-                                        <input type="password" class="form-control" placeholder="Enter Password" required>
+                                        <input type="password" class="form-control" name="pwd" placeholder="Enter Password" required>
                                     </p>
                                     <p>
                                         <button type="submit" class="btn btn-success btn-lg btn-block">新增</button>
@@ -150,6 +154,28 @@
                     </div>
                 </p>
             </div>
+        </div>
+        
+        <div class="container">
+            <table class="table table-dark" style="text-align: center;">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Create Date</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    @for ($i = 0; $i < count($data); $i++)
+                        <tr>
+                            <th scope="row">{{$data[$i]->id}}</th>
+                            <td>{{$data[$i]->username}}</td>
+                            <td>{{$data[$i]->date}}</td>
+                        </tr>
+                    @endfor
+                </tbody>
+            </table>
         </div>
     </body>
 </html>

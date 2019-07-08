@@ -12,3 +12,5 @@
     */
 
     Route::get('/','UserController@index');
+
+    Route::post('/adduser','UserController@create');

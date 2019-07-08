@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+date_default_timezone_set('Asia/Taipei');
+
 class CreateUsersTable extends Migration
 {
     /**
