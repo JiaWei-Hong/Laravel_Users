@@ -14,14 +14,21 @@ class UserController extends Controller
     public function create(Request $request){
         $items = (object) $request->toarray();
         
-        $user = new Users([
-            'username' => $items->username,
-            'account' => $items->account,
-            'password' => $items->pwd
-        ]);
+        $exist = Users::where('username',$items->username)
+                                                    ->get()
+                                                    ->toarray();
 
-        $user->save();
+        if(count($exist) > 0){
+            echo "<script>alert('此帳號已被註冊，換個帳號試試看!');</script>";
+        }else{
+            $user = new Users([
+                'username' => $items->username,
+                'account' => $items->account,
+                'password' => $items->pwd
+            ]);
+            $user->save();
+        }
 
-        return view('welcome');
+        return view('welcome',['data' => Users::all()]);
     }
 }
