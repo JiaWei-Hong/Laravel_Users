@@ -12,5 +12,9 @@
 */
 
 Route::get('/','UserController@index');
+Route::get('/delete/{id}','UserController@userDelete');
 
-Route::post('/adduser','UserController@create');
+Route::patch('/test','UserController@userUpdate');
+
+Route::post('/adduser','UserController@userAdd');
+Route::post('/search','UserController@userSearch');

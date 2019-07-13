@@ -24,8 +24,12 @@
             color: #636b6f;
             font-family: 'Nunito', sans-serif;
             font-weight: 200;
-            height: 100vh;
             margin: 0;
+        }
+
+        body{
+            background-color: #FFA07A;
+            background-size: auto;
         }
 
         .full-height {
@@ -87,7 +91,11 @@
         }
 
         table{
-            border-radius: 5px;
+            border-radius: 10px;
+        }
+
+        div{
+            user-select: none;
         }
     </style>
 </head>

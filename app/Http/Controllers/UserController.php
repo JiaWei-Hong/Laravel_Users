@@ -11,7 +11,13 @@ class UserController extends Controller
         return view('welcome',['data' => Users::all()]);
     }
 
-    public function create(Request $request){
+    public function userDelete($id){
+        Users::find($id)->delete();
+        echo "<script>alert('刪除成功!');location.href='../';</script>";
+        return view('welcome',['data' => Users::all()]);
+    }
+
+    public function userAdd(Request $request){
         $items = (object) $request->toarray();
         
         $exist = Users::where('username',$items->username)
@@ -30,5 +36,19 @@ class UserController extends Controller
         }
 
         return view('welcome',['data' => Users::all()]);
+    }
+
+    public function userSearch(Request $request){
+        $items = (object) $request->toarray();
+
+        $ans = Users::where('username',$request->username)
+                                                    ->get()
+                                                    ->toarray();
+
+        return view('welcome',['data' => $ans]);
+    }
+
+    public function userUpdate(Request $request){
+        dd($request);
     }
 }
