@@ -28,8 +28,8 @@
                                 <td>{{$items['date']}}</td>
                                 <td>
                                     {{ method_field('PUT') }}
-                                    <a href="./update/{{$items['id']}}" class="btn btn-warning" style="color:white;">Update</a>
-                                    <a href="./delete/{{$items['id']}}" class="btn btn-danger">Delete</a>
+                                    <a id="{{$items['id']}}" value={{ csrf_token() }} class="btn btn-warning modify" style="color:white;">Update</a>
+                                    <a href="./delete?id={{$items['id']}}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

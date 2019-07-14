@@ -14,7 +14,7 @@
 Route::get('/','UserController@index');
 Route::get('/delete/{id}','UserController@userDelete');
 
-Route::patch('/test','UserController@userUpdate');
-
 Route::post('/adduser','UserController@userAdd');
 Route::post('/search','UserController@userSearch');
+
+Route::patch('/modify/{id}','UserController@userUpdate');

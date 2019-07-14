@@ -49,6 +49,6 @@ class UserController extends Controller
     }
 
     public function userUpdate(Request $request){
-        dd($request);
+        return $request;
     }
 }
