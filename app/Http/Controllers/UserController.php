@@ -49,6 +49,7 @@ class UserController extends Controller
     }
 
     public function userUpdate(Request $request){
-        return $request;
+        $items = Users::where('id',$request->id)->update(['password'=> $request->pwd]);
+        return response('密碼更新成功',200);
     }
 }

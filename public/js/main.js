@@ -6,6 +6,11 @@ $(function () {
 
 
 function modifyProcess(id, password, token) {
+    if (password == null) {
+        alert('密碼不能為空');
+        return false;
+    }
+
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': token
