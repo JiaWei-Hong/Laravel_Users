@@ -13,7 +13,7 @@ class UserController extends Controller
 
     public function userDelete($id){
         Users::find($id)->delete();
-        echo "<script>alert('刪除成功!');location.href='../';</script>";
+        echo "<script>alert('Delete Success!');location.href='../';</script>";
         return view('welcome',['data' => Users::all()]);
     }
 
@@ -25,7 +25,7 @@ class UserController extends Controller
                                                     ->toarray();
 
         if(count($exist) > 0){
-            echo "<script>alert('此帳號已被註冊，換個帳號試試看!');</script>";
+            echo "<script>alert('AddUser Success!');location.href='../';</script>";
         }else{
             $user = new Users([
                 'username' => $items->username,
@@ -45,6 +45,7 @@ class UserController extends Controller
                                                     ->get()
                                                     ->toarray();
 
+        echo "<script>alert('Search Success');location.href='../';</script>";
         return view('welcome',['data' => $ans]);
     }
 
