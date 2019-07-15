@@ -67,7 +67,6 @@
                 </div>
             </p>
             
-            <p>
                 <div class="card">
                     <div class="card-body">
                     <span class="font">
@@ -89,7 +88,6 @@
                         </form>
                     </div>
                 </div>
-            </p>
         </div>
     </div>
 @endsection
