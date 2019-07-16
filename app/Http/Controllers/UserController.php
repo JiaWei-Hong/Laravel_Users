@@ -4,20 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Users;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('welcome',['data' => Users::all()]);
     }
 
-    public function userDelete($id){
+    public function userDelete($id)
+    {
         Users::find($id)->delete();
         echo "<script>alert('Delete Success!');location.href='../';</script>";
         return view('welcome',['data' => Users::all()]);
     }
 
-    public function userAdd(Request $request){
+    public function userAdd(Request $request)
+    {
         $items = (object) $request->toarray();
         
         $exist = Users::where('username',$items->username)
@@ -38,7 +42,8 @@ class UserController extends Controller
         return view('welcome',['data' => Users::all()]);
     }
 
-    public function userSearch(Request $request){
+    public function userSearch(Request $request)
+    {
         $items = (object) $request->toarray();
 
         $ans = Users::where('username',$request->username)
@@ -49,8 +54,20 @@ class UserController extends Controller
         return view('welcome',['data' => $ans]);
     }
 
-    public function userUpdate(Request $request){
+    public function userUpdate(Request $request)
+    {
         $items = Users::where('id',$request->id)->update(['password'=> $request->pwd]);
         return response('密碼更新成功',200);
+    }
+
+    public function userLogin(Request $request)
+    {
+        dd(Session::all());
+    }
+
+    public function userLogout(){
+        Session::flush();
+
+        return view('welcome',['data' => Users::all()]);
     }
 }

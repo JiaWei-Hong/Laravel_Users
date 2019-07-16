@@ -9,6 +9,10 @@
                 Users Simple
             </div>
 
+            <p>
+                <button type="submit" class="btn btn-success btn-lg btn-block">登出</button>
+            </p>
+
             <div class="container">
                 <table class="table table-dark" style="text-align: center;">
                     <thead>
@@ -40,6 +44,35 @@
             <p>
                 <div class="card">
                     <div class="card-body">
+                        <span class="font">
+                            Users. Login
+                        </span>
+                        <form action="./login" method="POST">
+                            @csrf
+                            <div class="container">
+                                <div class="form-group">
+                                    <p>
+                                        <input type="text" name="account" class="form-control" placeholder="Enter Account" required>
+                                    </p>
+
+                                    <p>
+                                        <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                                    </p>
+
+                                    <p>
+                                        <button type="submit" class="btn btn-success btn-lg btn-block">登入</button>
+                                        <button type="reset" class="btn btn-secondary btn-lg btn-block">重設</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </p>
+
+            <p>
+                <div class="card">
+                    <div class="card-body">
                     <span class="font">
                         Users. AddUser
                     </span>
@@ -67,12 +100,13 @@
                 </div>
             </p>
             
+            <p>
                 <div class="card">
                     <div class="card-body">
-                    <span class="font">
-                        Users. Search
-                    </span>
-                    <form action="./search" method="post">
+                        <span class="font">
+                            Users. Search
+                        </span>
+                        <form action="./search" method="post">
                             @csrf
                             <div class="container">
                                 <div class="form-group">
@@ -88,6 +122,7 @@
                         </form>
                     </div>
                 </div>
+            </p>
         </div>
     </div>
 @endsection

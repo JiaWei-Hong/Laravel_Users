@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Users;
+use Illuminate\Support\Facades\Session;
 
 class UserMiddleware
 {
@@ -13,12 +15,19 @@ class UserMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
+
     public function handle($request, Closure $next)
     {
-        if($request->age >= 18){
-            return $next($request);
+       $items = Users::where(['account' => $request->account,'password' => $request->password])
+                                                                                        ->get()
+                                                                                        ->toarray();
+                                                                                        
+        if(count($items) == 0){
+            return response('Data Not Found',400); // Status Code
         }else{
-            return redirect('/');
+            Session::put('username',$items[0]['username']);
+            Session::put('permission',$items[0]['permission']);
+            return $next($request);
         }
     }
 }

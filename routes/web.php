@@ -19,12 +19,4 @@ Route::post('/search','UserController@userSearch');
 
 Route::patch('/modify/{id}','UserController@userUpdate');
 
-// Route::get('/test',function(){  //Hash 
-//     $userPwd = Hash::make('1234');
-
-//     $res = Hash::check('1234',$userPwd);
-// });
-
-Route::middleware('check')->get('/check/{age}',function($age){
-    return $age;
-});
+Route::middleware('Login')->post('/login','UserController@userLogin');
